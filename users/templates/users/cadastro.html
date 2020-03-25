@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+ 
+ {% block title%}
+    Cadastro de clientes
+ {% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8 offset-md-2">
+                <div class="card auth-card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Cadastro de usuario</h4>
+                        <form method="post">
+                            <input type="hidden" name="next" value="{{ next }}">
+                            <div class="form-group">
+                                    {% csrf_token %}
+                                <form  class="form-signin">
+                                    {{form}}
+                                    <button type="submit" class="btn btn-success mt-3 center-block">Cadastrar</button>
+                                </form>
+                        </div>                
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    {% endblock %}

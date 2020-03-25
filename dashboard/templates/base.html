@@ -6,7 +6,7 @@
         <title>{% block title%}{% endblock %}</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-            
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
         {% block css %}
         {% endblock %}
     </head>
@@ -22,9 +22,11 @@
                 <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
+                {% if user.is_superuser %}
                 <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="/admin/auth/user/">Gerenciar Usuários</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
                 </li>
