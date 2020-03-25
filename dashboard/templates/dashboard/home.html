@@ -34,9 +34,9 @@
            <div class="card">
              <div class="card-header">
                Usuários
-               <button class="btn btn-primary float-right">
+               <a href="/accounts/cadastro" class="btn btn-primary float-right">
                       <i class="fa fa-user-plus" aria-hidden="true"></i> Criar novo usuário <span class="badge badge-primary"></span>
-               </button>
+               </a>
              </div>
              <div class="card-body">
               <table class="table table-hover">
@@ -44,19 +44,29 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Endereço</th>
                     <th scope="col">CPF</th>
                     <th scope="col">RG</th>
-                    <th scope="col">Foto de perfil</th>
+                    <th scope="col">editar</th>
+                    <th scope="col">deletar</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {% for user in users %}
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th>{{user.id}}</th>
+                    <th>{{user.username}}</th>
+                    <th>{{user.first_name}}</th>
+                    <th>{{user.email}}</th>
+                    <th>{{user.Endereço}}</th>
+                    <th>{{user.CPF}}</th>
+                    <th>{{user.RG}}</th>
+                    <th><button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-edit    "></i></button></th>
+                    <th><button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-undo" aria-hidden="true"></i></button></th>
                   </tr>
+                  {% endfor %}
                 </tbody>
               </table>
              </div>
