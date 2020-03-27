@@ -7,5 +7,8 @@ class Users(AbstractUser):
     RG = models.CharField(max_length=9)
     Profile_picture = models.CharField(max_length=255)
 
-    # if your additional field is a required field, just add it, don't forget to add 'email' field too.
-    # REQUIRED_FIELDS = ['mobile', 'email']
+class Document(models.Model):
+    description = models.CharField(max_length=255, blank=True)
+    document = models.FileField(upload_to='documents/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)     

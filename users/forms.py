@@ -1,8 +1,8 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Users
-
+from .models import Users, Document
 class UserModelForm(forms.ModelForm):
+
     class Meta:
         model = Users
         fields = ['username','first_name','last_name','CPF','RG','Endereço', 'email','password']
@@ -15,4 +15,15 @@ class UserModelForm(forms.ModelForm):
             'username': forms.TextInput(attrs={'class':'form-control', 'maxlength':255}),
             'email': forms.TextInput(attrs={'class':'form-control', 'maxlength':255}),
             'password': forms.PasswordInput(attrs={'class':'form-control', 'maxlength':255}),
+        }
+
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ('description', 'document', 'user')
+        user = forms.ModelMultipleChoiceField(queryset=Users.objects.none(), widget=forms.CheckboxSelectMultiple())
+        widgets = {
+            'description': forms.TextInput(attrs={'class':'form-control', 'maxlength':255}),
+            'document': forms.FileInput(attrs={'class':'form-control', 'maxlength':255}),
+
         }
