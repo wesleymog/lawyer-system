@@ -18,4 +18,6 @@ class Document(models.Model):
 
 class Searches(models.Model):
     result = models.CharField(max_length=255, blank=True)
+    title = models.CharField(max_length=255, blank=True)
+    link = models.CharField(max_length=255, blank=True)
     user = models.ForeignKey(Users, on_delete=models.CASCADE)   

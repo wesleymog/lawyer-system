@@ -26,5 +26,6 @@ def search_task(message):
                 "link": link
             }
             results.append(item)
-    search = Searches(result=json.dumps(results) , user=user)
-    search.save()
+            search = Searches(result='google',title=title, link=link, user=user)
+            search.save()
+    

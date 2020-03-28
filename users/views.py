@@ -44,7 +44,7 @@ def document_user(request, pk):
         'documents': documents
     })
 def search_results(request):
-    search = Searches.objects.all()
+    search = Searches.objects.all().order_by('pk')
     return render(request, 'users/search_results.html', {
         'search': search
     })
