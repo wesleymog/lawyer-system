@@ -11,7 +11,10 @@ class Document(models.Model):
     description = models.CharField(max_length=255, blank=True)
     document = models.FileField(upload_to='documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)     
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)   
+    def get_document_url(self):
+        if self.document:
+            return '/static/downloads/' + self.document.name +".pdf"
 
 class Searches(models.Model):
     result = models.CharField(max_length=255, blank=True)

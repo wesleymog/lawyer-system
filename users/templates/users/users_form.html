@@ -10,14 +10,14 @@
             <div class="col-md-8 offset-md-2">
                 <div class="card auth-card">
                     <div class="card-body">
-                        <h4 class="card-title text-center">Cadastro de usuario</h4>
+                        <h4 class="card-title text-center">Editar de usuario</h4>
                         <form method="post">
                             <input type="hidden" name="next" value="{{ next }}">
                             <div class="form-group">
                                     {% csrf_token %}
                                 <form  class="form-signin">
                                     {{form.as_p}}
-                                    <button type="submit" class="btn btn-success mt-3 center-block">Cadastrar</button>
+                                    <button type="submit" class="btn btn-success mt-3 center-block">Editar</button>
                                 </form>
                         </div>                
                     </div>

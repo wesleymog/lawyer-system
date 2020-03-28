@@ -7,6 +7,7 @@ import json
 def search_task(message):
     user = Users.objects.get(pk=message)
     query = user.first_name+"+"+user.last_name
+    print("oi")
     query = query.replace(' ', '+')
     URL = f"https://google.com/search?q={query}"
     # desktop user-agent

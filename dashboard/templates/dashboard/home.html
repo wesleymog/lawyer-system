@@ -59,6 +59,7 @@
                     <th scope="col">RG</th>
                     <th scope="col">editar</th>
                     <th scope="col">deletar</th>
+                    <th scope="col">documentos</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -71,8 +72,9 @@
                     <th>{{user.Endereço}}</th>
                     <th>{{user.CPF}}</th>
                     <th>{{user.RG}}</th>
-                    <th><button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-edit    "></i></button></th>
-                    <th><button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-undo" aria-hidden="true"></i></button></th>
+                    <th><a href="/accounts/edit-user/{{user.id}}" class="btn btn-warning btn-sm"><i class="fas fa-edit    "></i></button></th>
+                    <th><a href="/accounts/delete-user/{{user.id}}" class="btn btn-danger btn-sm"><i class="fa fa-undo" aria-hidden="true"></i></button></th>
+                    <th><a href="/accounts/documents-user/{{user.id}}" class="btn btn-danger btn-sm "><i class="fas fa-file    "></i></button></th>
                   </tr>
                   {% endfor %}
                 </tbody>

@@ -12,7 +12,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Lawyer</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,16 +20,13 @@
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
                 <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/dashboard/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 {% if user.is_superuser %}
                 <li class="nav-item">
-                <a class="nav-link" href="/admin/auth/user/">Gerenciar Usuários</a>
+                <a class="nav-link" href="/accounts/cadastro/">Cadastrar Usuários</a>
                 </li>
                 {% endif %}
-                <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/accounts/logout">Sair</a>
                 </li>
