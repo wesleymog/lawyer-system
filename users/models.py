@@ -12,3 +12,7 @@ class Document(models.Model):
     document = models.FileField(upload_to='documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(Users, on_delete=models.CASCADE)     
+
+class Searches(models.Model):
+    result = models.CharField(max_length=255, blank=True)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)   

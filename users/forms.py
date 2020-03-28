@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Users, Document
+from .models import Users, Document, Searches
 class UserModelForm(forms.ModelForm):
 
     class Meta:
@@ -25,5 +25,15 @@ class DocumentForm(forms.ModelForm):
         widgets = {
             'description': forms.TextInput(attrs={'class':'form-control', 'maxlength':255}),
             'document': forms.FileInput(attrs={'class':'form-control', 'maxlength':255}),
+
+        }
+
+class SearchForm(forms.ModelForm):
+    class Meta:
+        model = Searches
+        fields = ('result', 'user')
+        user = forms.ModelMultipleChoiceField(queryset=Users.objects.none(), widget=forms.CheckboxSelectMultiple())
+        widgets = {
+            'result': forms.Textarea(attrs={'class':'form-control'}),
 
         }
