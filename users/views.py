@@ -38,13 +38,26 @@ def document_upload(request):
     return render(request, 'users/documents.html', {
         'form': form
     })
+def document_upload_user(request, pk):
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('document_user', pk)
+    else:
+        form = DocumentForm()
+    return render(request, 'users/documents_users_form.html', {
+        'form': form,
+        'pk':pk
+    })
 def document_user(request, pk):
-    documents = Document.objects.filter(user__pk=1)
+    documents = Document.objects.filter(user__pk=pk)
     return render(request, 'users/documents_users.html', {
-        'documents': documents
+        'documents': documents,
+        'user':pk
     })
 def search_results(request):
-    search = Searches.objects.all().order_by('pk')
+    search = Searches.objects.all().order_by('-pk')
     return render(request, 'users/search_results.html', {
         'search': search
     })

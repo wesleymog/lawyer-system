@@ -14,27 +14,6 @@
       {{ message }}
     </div>
   {% endfor %}
-     <div class="container">
-         <div class="row">
-             <div class="col-md-10 offset-md-1 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                      Análise do Perfil do cliente
-                    </div>
-                    <div class="card-body">
-                      
-                      <form class="form-inline" method="post" action="/search/">
-                        {% csrf_token %}
-                        <div class="form-group mb-2">
-                          <input type="text" name="search" class="form-control"  id="id_search">
-                        </div>
-                        <button  type="submit" class="btn mb-2">Buscar</button>
-                      </form>
-                    </div>
-                  </div>
-             </div>
-         </div>
-     </div>
 
      <div class="container">
        <div class="row">
@@ -50,31 +29,39 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Endereço</th>
+                    <th scope="col">nome</th>
+                    <th scope="col">user</th>
+                    <th scope="col">email</th>
+                    <th scope="col">End.</th>
                     <th scope="col">CPF</th>
                     <th scope="col">RG</th>
                     <th scope="col">editar</th>
                     <th scope="col">deletar</th>
                     <th scope="col">documentos</th>
+                    <th scope="col">search</th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for user in users %}
                   <tr>
-                    <th>{{user.id}}</th>
                     <th>{{user.username}}</th>
                     <th>{{user.first_name}}</th>
                     <th>{{user.email}}</th>
                     <th>{{user.Endereço}}</th>
                     <th>{{user.CPF}}</th>
                     <th>{{user.RG}}</th>
-                    <th><a href="/accounts/edit-user/{{user.id}}" class="btn btn-warning btn-sm"><i class="fas fa-edit    "></i></button></th>
-                    <th><a href="/accounts/delete-user/{{user.id}}" class="btn btn-danger btn-sm"><i class="fa fa-undo" aria-hidden="true"></i></button></th>
-                    <th><a href="/accounts/documents-user/{{user.id}}" class="btn btn-danger btn-sm "><i class="fas fa-file    "></i></button></th>
+                    <th><a href="/accounts/edit_user/{{user.id}}" class="btn btn-warning btn-sm"><i class="fas fa-edit    "></i></button></th>
+                    <th><a href="/accounts/delete_user/{{user.id}}" class="btn btn-danger btn-sm"><i class="fa fa-undo" aria-hidden="true"></i></button></th>
+                    <th><a href="/accounts/documents_user/{{user.id}}" class="btn btn-danger btn-sm "><i class="fas fa-file    "></i></button></th>
+                    <th>
+                      <form class="form-inline" method="post" action="/search/">
+                        {% csrf_token %}
+                        <div class="form-group mb-2">
+                          <input type="hidden" name="search" class="form-control"  id="id_search" value="{{user.id}}">
+                        </div>
+                        <button  type="submit" class="btn btn-sm"><i class="fa fa-search" aria-hidden="true"></i></button>
+                      </form>
+                    </th>
                   </tr>
                   {% endfor %}
                 </tbody>
