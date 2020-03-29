@@ -1,14 +1,32 @@
 {% extends 'base.html' %}
-
-{% block content %}
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.description }}
-    {{ form.document }}
-    {{pk}}
-    <input type="hidden" name="user" required="" id="id_user" value="{{pk}}">
-    <button type="submit">Upload</button>
-  </form>
-
-  <p><a href="{% url 'home' %}">Return to home</a></p>
-{% endblock %}
+ 
+    {% block title%}
+    Dashboard Admin
+    {% endblock %}
+   
+       {% block content %}
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mt-5">
+              <div class="card">
+                <div class="card-header">
+                  Documentos
+                  <a href="/accounts/document_upload_user/{{user}}" class="btn btn-primary float-right">
+                         <i class="fa fa-user-plus" aria-hidden="true"></i> Inserir novo documento ao usuário <span class="badge badge-primary"></span>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="document">Documento</label>{{ form.document }}
+                    <label for="description">Description</label>{{ form.description }}
+                    <input type="hidden" name="user" required="" id="id_user" value="{{pk}}">
+                    <button type="submit" class="btn btn-success mt-1">Upload</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+       {% endblock %}
